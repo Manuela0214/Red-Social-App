@@ -1,4 +1,10 @@
 import { StatusBar } from "expo-status-bar";
+import { ActivityIndicator, Colors, Card, BottomNavigation, Banner } from 'react-native-paper';
+import { Appbar } from 'react-native-paper';
+import { Platform } from 'react-native';
+
+
+
 import React from "react";
 import {
   StyleSheet,
@@ -10,14 +16,19 @@ import {
   Image,
   Dimensions,
   TouchableHighlight,
+  Button,
 } from "react-native";
 
 import SessionNavbar from "./security/SessionNavbvar";
 
-const bgImg = require("../../assets/bg/astronauta.jpg");
 
-//const bgImg = require("../../assets/bg/astronauta.jpg");
- 
+const MORE_ICON = Platform.OS === 'android' ? 'dots-horizontal' : 'dots-vertical';
+
+
+//const bgImg = require("../../assets/bg/mobile_bg.jpg");
+
+//<ImageBackground source={bgImg} style={styles.backgroundApp}></ImageBackground>
+
 export default class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -58,41 +69,55 @@ export default class Main extends React.Component {
     if (this.state.loading) {
       return (
         <View style={styles.dataViewLoading}>
-          <Text>Cargando..., mientras tanto...¿Todo bien por casita?</Text>
+          <ActivityIndicator style={styles.animacion} animating={true} color={Colors.cyan500} size={'large'} />
+          <Text style={styles.cargandito}>Cargando... mientras tanto...¿Todo bien por casita?</Text>
         </View>
       );
     } else {
       return (
-        <ImageBackground source={bgImg} style={styles.backgroundApp}>
-        <View style={styles.videojuegosView}>
-         <SessionNavbar navigation={navigation}></SessionNavbar>
-          <Text style={{ color: "orange", fontSize: 25 }}>Videojuegos List</Text>
-          <FlatList
-            style={styles.flatList}
-            data={this.state.videojuegos}
-            renderItem={({ item }) => (
-              <View style={styles.videojuegoViewContent}>
-                <TouchableHighlight
-                  onPress={() => {
-                    Alert.alert("Image Tapped", `Videojuego: ${item.nombre}`);
-                  }}
-                >
-                  <Image
-                    source={{
-                      width: 150,
-                      height: 150,
-                      uri: `http://192.168.1.55:3000/files/2/${item.imagenes[0].id}`,
+        <View >
+          <Appbar.Header>
+            <Appbar.Content title="gamesGG" subtitle={'Bienvenido/a!'} />
+            <Appbar.Action icon="chat" onPress={() => this.props.navigation.push("ChatLogin")} />
+            <Appbar.Action icon="login" onPress={() => this.props.navigation.push("Login")} />
+            <Appbar.Action icon="circle" onPress={() => this.props.navigation.push("Registro")} />
+            <Appbar.Action icon="dots-vertical" onPress={() => { }} />
+          </Appbar.Header>
+
+          
+
+          <View style={styles.videojuegosView}>
+
+            <SessionNavbar navigation={navigation}></SessionNavbar>
+
+            <Text style={{ color: "orange", fontSize: 25 }}>Videojuegos List</Text>
+
+            <FlatList
+              style={styles.flatList}
+              data={this.state.videojuegos}
+              renderItem={({ item }) => (
+                <View style={styles.videojuegoViewContent}>
+                  <TouchableHighlight
+                    onPress={() => {
+                      Alert.alert("Image Tapped", `Videojuego: ${item.nombre}`);
                     }}
-                  />
-                </TouchableHighlight>
-                <Text style={styles.videojuegoName}>{item.nombre}</Text>
-                
-                <Text style={styles.Categoria}>Categoria: {item.categoria.nombre}</Text>
-              </View>
-            )}
-          ></FlatList>
+                  >
+                    <Image
+                      source={{
+                        width: 150,
+                        height: 150,
+                        uri: `http://192.168.1.55:3000/files/2/${item.imagenes[0].id}`,
+                      }}
+                    />
+                  </TouchableHighlight>
+                  <Text style={styles.videojuegoName}>{item.nombre}</Text>
+                  <Text style={styles.Categoria}>Categoria:{item.categoria.nombre}</Text>
+                </View>
+              )}
+            ></FlatList>
+          </View>
         </View>
-        </ImageBackground>
+
       );
     }
   }
@@ -111,17 +136,22 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
   },
+  animacion: {
+    margin: 150,
+    alignItems: "center",
+    justifyContent: "center"
+
+  },
   videojuegoName: {
     fontSize: 18,
     color: "#ff0000",
   },
-  Categoria:{
-    color: "white",
+  Categoria: {
+    color: "green",
   },
   videojuegosView: {
     alignItems: "center",
-    alignContent: "center",
-    flex: 1,
+    alignContent: "center"
   },
   dataViewLoading: {
     alignItems: "center",
@@ -152,4 +182,11 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     width: Dimensions.get("window").width / 2,
   },
+  cargandito: {
+    fontWeight: "800",
+    fontSize: 30,
+    color: "#514E5A",
+    alignItems: "center",
+    justifyContent: "center",
+  }
 });

@@ -1,6 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, Alert, Button, AsyncStorage } from "react-native";
+import{ActivityIndicator, Colors} from 'react-native-paper';
+
 
 export default class SessionNavbar extends React.Component {
   constructor(props) {
@@ -46,10 +48,7 @@ export default class SessionNavbar extends React.Component {
       return <Text style={styles.sesion} onPress={this.signOut}>En sesion {this.state.name}</Text>;
     } else {
       return (
-        <Button
-          title="Ingresar"
-          onPress={() => this.props.navigation.push("Login")}
-        />
+       <Text></Text>
       );
     }
   }
