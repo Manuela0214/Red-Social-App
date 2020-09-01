@@ -91,7 +91,7 @@ export default class Main extends React.Component {
                 <View style={styles.videojuegoViewContent}>
                   <TouchableHighlight
                     onPress={() => {
-                      Alert.alert("Image Tapped", `Videojuego: ${item.nombre}`);
+                      Alert.alert(`Videojuego: ${item.nombre}`);
                     }}
                   >
                     <Image
@@ -119,7 +119,7 @@ export default class Main extends React.Component {
 
 const styles = StyleSheet.create({
   videojuegoViewContent: {
-    borderColor: "gray",
+    borderColor: "#8CEE02",
     borderWidth: 2,
     borderRadius: 5,
     margin: 5,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     color: "#ff0000",
   },
   Categoria: {
-    color: "green",
+    color: "#8CEE02",
   },
   videojuegosView: {
     alignItems: "center",
@@ -164,13 +164,13 @@ const styles = StyleSheet.create({
   },
   flatList: {
     backgroundColor:"red",
-    alignContent: "center",
+    alignContent: "space-between",
     textAlign: "center",
     alignSelf: "center",
   },
   img: {
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 150,
   },
   separator: {
     height: 4,

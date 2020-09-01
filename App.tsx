@@ -6,13 +6,17 @@ import ChatScreen from "./app/screens/chat/ChatScreen";
 import HomeScreen from "./app/screens/Main";
 import LoginScreen from "./app/screens/security/Login";
 import Regustro from "./app/screens/security/Registro"
+import HomeScreen2 from "./app/screens/parameters/HomeNoLogin"
 
 const Stack = createStackNavigator();
+
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Home2">
+        
+      <Stack.Screen name="Home2" component={HomeScreen2} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name = "Registro" component = {Regustro}/>
