@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, Alert, Button, AsyncStorage } from "react-native";
-import{ActivityIndicator, Colors} from 'react-native-paper';
+import { StyleSheet, Text, Alert, Button, AsyncStorage, View } from "react-native";
+import{ActivityIndicator, Colors, Appbar} from 'react-native-paper';
 
 
 export default class SessionNavbar extends React.Component {
@@ -12,15 +12,20 @@ export default class SessionNavbar extends React.Component {
   state = {
     isLoggedIn: false,
     name: "",
+    nombre:""
   };
 
   async componentDidMount() {
     let session = await AsyncStorage.getItem("session");
 
     if (session) {
+      
+      console.log(session)
       this.setState({
+        
         isLoggedIn: true,
         name: JSON.parse(session).data.nombre_usuario,
+        nombre: JSON.parse(session).data.nombre
       });
     }
   }
@@ -45,10 +50,26 @@ export default class SessionNavbar extends React.Component {
 
   render() {
     if (this.state.isLoggedIn) {
-      return <Text style={styles.sesion} onPress={this.signOut}>En sesion {this.state.name}</Text>;
+      return <View>
+        <Appbar.Header>
+            <Appbar.Content title="gamesGG" subtitle={`Hola!, ¿Cómo estás hoy ${this.state.nombre} ?`} />
+            <Appbar.Action icon="chat" onPress={() => this.props.navigation.push("ChatLogin")} />
+            <Appbar.Action icon="dots-vertical" onPress={() => { }} />
+          </Appbar.Header>
+          <View style={styles.videojuegosView}>
+            
+          <Text style={styles.sesion} onPress={this.signOut}>En sesion {this.state.name}</Text>
+          </View>
+          </View>
     } else {
       return (
-       <Text></Text>
+        <View>
+        <Appbar.Header>
+            <Appbar.Content title="gamesGG" subtitle={'Bienvenido/a!'} />
+            <Appbar.Action icon="login" onPress={() => this.props.navigation.push("Login")} />
+            <Appbar.Action icon="book" onPress={() => this.props.navigation.push("Registro")} />
+          </Appbar.Header>
+          </View>
       );
     }
   }
@@ -62,7 +83,12 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   sesion:{
-    fontSize: 12,
-    color:"green",
+    fontWeight : "100",
+        fontSize:17,
+        color:"#F10085",
+  },
+  videojuegosView: {
+    alignItems: "flex-start",
+    alignContent: "flex-start"
   }
 });

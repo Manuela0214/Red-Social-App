@@ -25,7 +25,8 @@ import SessionNavbar from "./security/SessionNavbvar";
 const MORE_ICON = Platform.OS === 'android' ? 'dots-horizontal' : 'dots-vertical';
 
 
-//const bgImg = require("../../assets/bg/mobile_bg.jpg");
+const bgImgHome = require("../../assets/bg/astronauta.jpg");
+const bgImg = require("../../assets/bg/mobile_bg.jpg");
 
 //<ImageBackground source={bgImg} style={styles.backgroundApp}></ImageBackground>
 
@@ -69,33 +70,24 @@ export default class Main extends React.Component {
     if (this.state.loading) {
       return (
         <View style={styles.dataViewLoading}>
+          
+          <ImageBackground source={bgImg} style={styles.backgroundApp}>
           <ActivityIndicator style={styles.animacion} animating={true} color={Colors.cyan500} size={'large'} />
           <Text style={styles.cargandito}>Cargando... mientras tanto...¿Todo bien por casita?</Text>
+          </ImageBackground>
         </View>
       );
     } else {
       return (
         <View >
-          <Appbar.Header>
-            <Appbar.Content title="gamesGG" subtitle={'Bienvenido/a!'} />
-            <Appbar.Action icon="chat" onPress={() => this.props.navigation.push("ChatLogin")} />
-            <Appbar.Action icon="login" onPress={() => this.props.navigation.push("Login")} />
-            <Appbar.Action icon="circle" onPress={() => this.props.navigation.push("Registro")} />
-            <Appbar.Action icon="dots-vertical" onPress={() => { }} />
-          </Appbar.Header>
-
-          
-
+           <ImageBackground source={bgImgHome} style={styles.backgroundApp}>
+          <SessionNavbar navigation={navigation}></SessionNavbar>
+        
           <View style={styles.videojuegosView}>
+         
+            <Text style={{ color: "#9BEE02", fontSize: 25, fontWeight : "100",}}>VIDEOJUEGOS</Text>
 
-            <SessionNavbar navigation={navigation}></SessionNavbar>
-
-            <Text style={{ color: "orange", fontSize: 25 }}>Videojuegos List</Text>
-
-            <FlatList
-              style={styles.flatList}
-              data={this.state.videojuegos}
-              renderItem={({ item }) => (
+            <FlatList data={this.state.videojuegos} renderItem={({ item }) => (
                 <View style={styles.videojuegoViewContent}>
                   <TouchableHighlight
                     onPress={() => {
@@ -115,7 +107,9 @@ export default class Main extends React.Component {
                 </View>
               )}
             ></FlatList>
+           
           </View>
+          </ImageBackground>
         </View>
 
       );
@@ -169,6 +163,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   flatList: {
+    backgroundColor:"red",
     alignContent: "center",
     textAlign: "center",
     alignSelf: "center",
@@ -185,8 +180,11 @@ const styles = StyleSheet.create({
   cargandito: {
     fontWeight: "800",
     fontSize: 30,
-    color: "#514E5A",
+    color: "#CEF897",
     alignItems: "center",
     justifyContent: "center",
+  },
+  probando:{
+    backgroundColor: "brown"
   }
 });

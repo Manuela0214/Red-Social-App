@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     },
 
     header:{
-                    fontWeight : "800",
+        fontWeight : "800",
         fontSize:30,
         color:"#514E5A",
         marginTop:32
