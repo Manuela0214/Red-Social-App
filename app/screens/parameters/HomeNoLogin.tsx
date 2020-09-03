@@ -54,16 +54,15 @@ export default class Main extends React.Component {
     if(this.state.isLoggedIn === false){
         return(
         
-            <ScrollView  style={{backgroundColor:"white"}}>
+            <ScrollView  style={{backgroundColor:"#white"}}>
             <SessionNavbar navigation={navigation}></SessionNavbar>
+            <Image style={styles.bannerHome} source={require('../../../assets/videojuego.jpeg')}></Image>
             <Text style={styles.texto}>Sube publicaciones sobre tus videojuegos favoritos</Text>
-            <Image style={styles.imagenHome} source={require('../../../assets/publicacion.jpeg')}></Image>
-            <Text style={styles.texto}>Mira diferentes videojuegos</Text>
-            <Image style={styles.imagenHome} source={require('../../../assets/videojuego.jpeg')}></Image>
-            <Text style={styles.texto}>Conoce ofertas de tus videojuegos favoritos</Text>
-            <Image style={styles.imagenHome} source={require('../../../assets/oferta.jpeg')}></Image>
+            <Image style={styles.imagenHome} source={require('../../../assets/publicaciones.png')}></Image>
             <Text style={styles.texto}>Comparte con otros usuarios con chat en vivo</Text>
-            <Image style={styles.imagenHome} source={require('../../../assets/chat.jpeg')}></Image>
+            <Image style={styles.imagenHome} source={require('../../../assets/imgchat.PNG')}></Image>
+            <Text style={styles.texto}>Conoce ofertas de tus videojuegos favoritos</Text>
+            <Image style={styles.imagenHome} source={require('../../../assets/oferta.PNG')}></Image>
             </ScrollView>
           );
     }else{
@@ -79,19 +78,26 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  imagenHome: {
+  bannerHome: {
     height:500,
     width: "100%",
     marginTop:30,
     paddingEnd:30
   },
-
+imagenHome:{
+  height:500,width: "100%",
+  marginTop:30,
+  paddingEnd:30,
+  alignSelf:"center"
+},
   texto:{
     fontWeight: "800",
-    fontSize: 30,
-    color: "#2962FF",
-    alignItems: "center",
+    fontSize: 35,
+    paddingTop:30,
+    alignSelf: "center",
+    alignContent:"center",
     justifyContent: "center",
-    marginStart:50
+    marginStart:50,
+    fontFamily:"Arial"
   }
 });

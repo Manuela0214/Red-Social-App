@@ -14,7 +14,7 @@ import {
 
 import md5 from "md5";
 
-const bgImg = require("../../../assets/bg/mobile_bg.jpg");
+const bgImg = require("../../../assets/bg/sky.jpg");
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class Login extends React.Component {
   state = {
     nombre_usuario: "",
     contrasena: "",
-    url: "http://192.168.1.55:3000/login",
+    url: "http://192.168.0.15:3000/login",
   };
 
   async onLogin() {
@@ -67,8 +67,7 @@ export default class Login extends React.Component {
     return (
       <ImageBackground source={bgImg} style={styles.backgroundApp}>
         <SafeAreaView style={styles.container}>
-          <Text style={styles.titleText}>Hi, Welcome To</Text>
-          <Text style={styles.titleText}>My App</Text>
+          <Text style={styles.titleText}>Inicia Sesion</Text>
           <TextInput
             value={this.state.nombre_usuario}
             keyboardType="default"
@@ -113,10 +112,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     color: "#fff",
+    padding:10
   },
   button: {
     alignItems: "center",
-    backgroundColor: "powderblue",
+    backgroundColor: "#A471EF",
     width: 200,
     height: 44,
     padding: 10,
@@ -128,10 +128,11 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
+    
   },
   input: {
-    width: 200,
+    width: 300,
     fontSize: 20,
     height: 44,
     padding: 10,
@@ -139,5 +140,6 @@ const styles = StyleSheet.create({
     borderColor: "white",
     backgroundColor: "#fff",
     marginVertical: 10,
+    borderRadius: 10
   },
 });

@@ -38,7 +38,7 @@ export default class Main extends React.Component {
       loading: false,
       videojuegos: [],
       url:
-        'http://192.168.1.55:3000/videojuego?filter={"include":[{"relation":"categoria"},{"relation":"imagenes"}]}',
+        'http://192.168.0.15:3000/videojuego?filter={"include":[{"relation":"categoria"},{"relation":"imagenes"}]}',
     };
   }
 
@@ -85,9 +85,11 @@ export default class Main extends React.Component {
         
           <View style={styles.videojuegosView}>
          
-            <Text style={{ color: "#9BEE02", fontSize: 25, fontWeight : "100",}}>VIDEOJUEGOS</Text>
-
-            <FlatList data={this.state.videojuegos} renderItem={({ item }) => (
+            <Text style={{ color: "white", fontSize: 25, fontWeight : "100", alignSelf:"center"}}>VIDEOJUEGOS</Text>
+            <FlatList 
+              data={this.state.videojuegos} 
+              numColumns={2}
+              renderItem={({ item }) => (
                 <View style={styles.videojuegoViewContent}>
                   <TouchableHighlight
                     onPress={() => {
@@ -98,7 +100,7 @@ export default class Main extends React.Component {
                       source={{
                         width: 150,
                         height: 150,
-                        uri: `http://192.168.1.55:3000/files/2/${item.imagenes[0].id}`,
+                        uri: `http://192.168.0.15:3000/files/2/${item.imagenes[0].id}`,
                       }}
                     />
                   </TouchableHighlight>
@@ -119,12 +121,14 @@ export default class Main extends React.Component {
 
 const styles = StyleSheet.create({
   videojuegoViewContent: {
-    borderColor: "#8CEE02",
+    borderColor: "white",
     borderWidth: 2,
     borderRadius: 5,
     margin: 5,
     alignItems: "center",
     justifyContent: "center",
+    paddingHorizontal:30,
+    flex:1
   },
   backgroundApp: {
     flex: 1,
@@ -138,10 +142,10 @@ const styles = StyleSheet.create({
   },
   videojuegoName: {
     fontSize: 18,
-    color: "#ff0000",
+    color: "#6BB6E7",
   },
   Categoria: {
-    color: "#8CEE02",
+    color: "white",
   },
   videojuegosView: {
     alignItems: "center",
