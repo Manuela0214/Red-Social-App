@@ -30,6 +30,12 @@ export default class SessionNavbar extends React.Component {
     }
   }
 
+  getName(){
+    console.log(this.componentDidMount());
+    
+  }
+  
+
   signOut = () => {
     Alert.alert("Salir de la sesión", "Quieres salir?", [
       {
@@ -43,7 +49,7 @@ export default class SessionNavbar extends React.Component {
         },
       },
       {
-        text: "No hombre no",
+        text: "Cancelar",
       },
     ]);
   };
@@ -52,13 +58,13 @@ export default class SessionNavbar extends React.Component {
     if (this.state.isLoggedIn) {
       return <View>
         <Appbar.Header>
-            <Appbar.Content title="gamesGG" subtitle={`Hola!, ¿Cómo estás hoy ${this.state.nombre} ?`} />
+            <Appbar.Content title="gamesGG" subtitle={`Hola!, ¿Cómo estás hoy ${this.state.name} ?`} />
             <Appbar.Action icon="chat" onPress={() => this.props.navigation.push("ChatLogin")} />
-            <Appbar.Action icon="dots-vertical" onPress={() => { }} />
+            <Appbar.Action icon="dots-vertical" onPress={() => this.props.navigation.push("Info")} />
           </Appbar.Header>
           <View style={styles.videojuegosView}>
             
-          <Text style={styles.sesion} onPress={this.signOut}>En sesion {this.state.name}</Text>
+          <Text style={styles.sesion} onPress={this.signOut}>En Linea</Text>
           </View>
           </View>
     } else {
@@ -84,8 +90,8 @@ const styles = StyleSheet.create({
   },
   sesion:{
     fontWeight : "100",
-        fontSize:17,
-        color:"#F10085",
+    fontSize:20,
+    color:"#12B7FF",
   },
   videojuegosView: {
     alignItems: "flex-start",

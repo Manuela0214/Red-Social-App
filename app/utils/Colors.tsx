@@ -1,1 +1,1 @@
-export const fontColor = 'orange';
+export const fontColor = 'black';

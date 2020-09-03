@@ -15,7 +15,7 @@ import {
 
 import md5 from "md5";
 
-const bgImg = require("../../../assets/bg/mobile_bg.jpg");
+const bgImg = require("../../../assets/bg/sky.jpg");
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -36,7 +36,7 @@ export default class Register extends React.Component {
     genero: "",
     intereses: "",
     mensajesId: "",
-    url: "http://192.168.1.55:3000/usuarios",
+    url: "http://192.168.0.15:3000/usuarios",
   };
 
   async onRegister() {
@@ -111,7 +111,7 @@ export default class Register extends React.Component {
       <ScrollView>
       <ImageBackground source={bgImg} style={styles.backgroundApp}>
         <SafeAreaView style={styles.container}>
-          <Text style={styles.titleText}>Registro</Text>
+          <Text style={styles.titleText}>Registrate!</Text>
           <TextInput
             value={this.state.primer_nombre}
             keyboardType="default"
@@ -229,10 +229,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     color: "#fff",
+    paddingTop:30,
+    paddingBottom:30
   },
   button: {
     alignItems: "center",
-    backgroundColor: "powderblue",
+    backgroundColor: "#AA7CED",
     width: 200,
     height: 44,
     padding: 10,
@@ -255,5 +257,6 @@ const styles = StyleSheet.create({
     borderColor: "white",
     backgroundColor: "#fff",
     marginVertical: 10,
+    borderRadius: 10
   },
 });
